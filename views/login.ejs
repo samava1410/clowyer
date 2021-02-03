@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clowyer-Ingresar</title>
+    <link rel="stylesheet" href="/js-css/icons/foundation-icons.css">
+    <link rel="shortcut icon" href="/js-css/img/browser.ico"/>
+    <link rel="stylesheet" href="/js-css/css/foundation-flex.css">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link rel="stylesheet" href="/js-css/css/css-created/app.css">
+  </head>
+  <body> 
+    <%if(Email){%>
+      <script>alert('No se encontro el correo.');</script>
+    <%}%>
+    <%if(Password){%>
+      <script>alert('Contraseña equivocada.');</script>
+    <%}%>
+    <%if(Empty){%>
+      <script>alert('Faltan datos.');</script>
+    <%}%>
+    <script type="text/javascript"></script>
+    <section id="login-container">
+      <div class="row align-center">
+        <div class="column small-12 medium-4 text-center">
+          <img src="/js-css/img/login.png" height="130" width="130">
+          <h5>CLOWYER</h3>
+          <form action="/login-lawyer-web" method="post">
+               <div class="row">
+                <div class="small-12 columns">
+                  <label>Correo</label>
+                  <input type="text" name="email" placeholder="Correo" required/>
+                </div>
+                <div class="small-12 columns password-wrapper">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" class="password" placeholder="Contraseña" required>
+                    <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
+                </div>
+              </div>
+              <div class="column-12 align-center">
+                   <input type="submit" value="Ingresar" class="button">
+              </div>
+          </form>
+          <div class="column-12 align-center">
+              <a href="/">
+                <button class="button">Atras</button>
+              </a>
+          </div>
+          <div class="column-12 align-center">
+            <a href="mail">
+              <label>
+                Recuperar contraseña?
+              </label>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js-css/js/vendor/jquery.js"></script>
+    <script src="js-css/js/vendor/what-input.js"></script>
+    <script src="js-css/js/vendor/foundation.js"></script>
+    <script src="js-css/js/app.js"></script>
+  </body>
+</html>

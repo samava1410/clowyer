@@ -1,0 +1,97 @@
+body{
+	background-image: url("../../img/fondo.jpg");
+ 	background-position: center center;
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover;
+  	background-color: #464646;
+	font-family: 'Gothic A1', sans-serif;
+}
+
+h1, h2, h3, h4, h5, button, label{
+	font-family: 'Gothic A1', sans-serif;
+	color: white;
+}
+
+#login-container{
+	height: 50%;
+}
+
+#login-container .column{
+	background-color: #283d3b;
+	opacity: 0.9;
+	padding: 5%;
+	margin: 5%;
+}
+
+#login-container .button{
+	background-color: #c44536;
+}
+
+.button{
+  width: 80%;
+}
+
+.show-password {
+  width: 100%;
+}
+
+.show-password label {
+  position: absolute;
+  left: -9999px;
+  text-indent: -9999px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password + .unmask {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+}
+
+.password + .unmask:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.password[type="text"] + .unmask:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+

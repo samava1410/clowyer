@@ -1,0 +1,88 @@
+body{
+	background-color: #E8E9F3;
+	font-family: 'Gothic A1', sans-serif;
+}
+
+h1, h2, h3, h4, h5, button, label, a{
+	font-family: 'Gothic A1', sans-serif;
+}
+
+#header-container .callout{
+ 	background-color: #283d3b;
+ 	color: white;
+ 	padding-bottom: 0;
+ 	margin-bottom: 0;
+}
+
+#menu-container {
+	background-color: #E8E9F3;
+	color: white;
+	border: 1px solid #C4C4C4;
+    border-radius: 5px;
+}
+
+#menu-container .tabs{
+	background-color: #E8E9F3;
+	color: white;
+}
+
+
+#menu-container li a{
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+}
+
+#menu-container li a:hover{
+	background-color: #772E25;
+	font-size: 14px;
+	color: white;
+}
+
+.tabs-title{
+	display: inline-block;
+	float: none;
+}
+
+.tabs-title.is-active a{
+	background-color: #772E25;
+	font-size: 14px;
+	color: white;
+}
+
+.tabs-content{
+	border: 0;
+}
+
+.tabs-panel{
+	background-color: #E8E9F3;
+	padding-top: 0;
+}
+
+#search-bar{
+	padding-top: 2%;
+}
+
+#lateral-menu{
+	padding-top: 2%;
+}
+
+#lateral-menu li a{
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+}
+
+#lateral-menu li a:hover{
+	background-color: #772E25;
+	font-size: 14px;
+	color: white;
+}
+
+#lateral-menu i{
+	padding-right: 3%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

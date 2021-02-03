@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+	<html>
+	<html  lang="en" dir="ltr">
+	  <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Clowyer-Caso</title>
+	    <link rel="stylesheet" href="/js-css/icons/foundation-icons.css">
+	    <link rel="shortcut icon" href="/js-css/img/browser.ico"/>
+    	<link rel="stylesheet" href="/js-css/css/foundation-flex.css">
+    	<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+	    <link rel="stylesheet" href="/js-css/css/css-created/main.css">
+	  </head>
+	<body>
+		<section id="header-container">
+			<div class="callout">
+				<div class="column text-center">
+					<h3>CLOWYER</h2>
+				</div>
+			</div>
+		</section>				
+		<section id="scrollSticky" data-sticky-container>
+	      <div class="sticky-container" data-sticky data-options="marginTop:0;"
+		       data-sticky-on="small" data-top-anchor="scrollSticky">
+		      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
+		      		<div class="column small-12 medium-6" id="top-menu">
+		      			<div class="input-group" id="search-bar">
+			    			<span class="input-group-label"><i class="fi-eye"></i></span>
+					       	<input id="searchCase" type="text" name="search" class="input-group-field" placeholder="Buscar en documentos">
+				      	</div>	
+				    </div>
+			    </div>
+	      </div>
+	    </section>
+	    <section>
+	    	<div class="expanded row" id="lateral-menu">
+				<div class="column small-12 medium-2">
+					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
+						<li class="tabs-title">
+							<h5><%=Case.name%></h5>
+						</li>
+						<li class="tabs-title">
+				            <a href="/main">
+				            	<i class="fi-arrow-left"></i> 
+				            	Inicio 
+				        	</a>
+				        </li>
+						<li class="tabs-title">
+				            <a data-open="modalAddDocument">
+				            	<i class="fi-page-add"></i> 
+				            	Añadir Documento 
+				        	</a>
+				        </li>
+						<li class="tabs-title">
+				            <a data-open="modalEditCase">
+				            	<i class="fi-pencil"></i>
+				            	 Editar Caso 
+				            </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a data-open="modalDeleteCase">
+				            	<i class="fi-x"></i>
+				            	 Borrar caso
+				            </a>
+				        </li>
+				        <li class="tabs-title">
+				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
+				        </li>
+					</ul>
+				</div>
+				<div class="column small-12 medium-10">
+					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
+				    	<div class="tabs-panel is-active text-center" id="panelCases">
+				    		<h2>Documentos</h2>
+					    	<table class="stack">
+							  <thead>
+							    <tr>
+								<th width="200">Nombre</th>
+								<th width="150">Tipo</th>
+								<th width="150">Descargar</th>
+								<th width="150">Borrar</th>
+								</tr>
+							  </thead>
+							  <tbody id="tableDoc">
+							      <% for(var i=0; i < Document.length; i++) { %>
+							 	  <tr>
+								    <td><%= Document[i].name %></td>
+								    <td><%= Document[i].type %></td>
+								    <td><u><a href="<%= Document[i].url %>" download>Descargar</a></u></td>
+								    <td><button class="button" onclick="deleteDoc('<%= Document[i]._id %>')">Borrar</button></td>
+								 </tr>
+								<% } %>
+							  </tbody>
+							</table>		
+				    	</div>
+				    </section>
+				</div>
+				<div class="reveal" id="modalAddDocument" data-reveal>
+				  <form action="/document-web-case" method="post" enctype="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Documentos</h4>
+		             </div>
+		              <div class="small-12 columns">
+		              	<label>Nombre</label>
+		                <input type="text" name="name"  placeholder="Nombre" required />
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Tipo</label>
+		                <input type="text" name="type" placeholder="Tipo" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
+		                <input type="number" name="caseNumber" 
+		                value="<%= Case.number %>" placeholder="Numero de caso" required/>
+		              </div>
+		              <div>
+		              	<input type="file" name="url" id= "url" value="Subir Archivo" required>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		           	  	<button class="button" type="submit" onclick="showSuccessMessage()">Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>	    
+				<div class="reveal" id="modalEditCase" data-reveal>
+				  <form action="/case-web-update" method="post" name="formCase">
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Casos</h4>
+		             </div>
+					<input type="text" name="_id" value="<%=Case._id%>" style="display:none;">
+		             <div class="small-12 columns">
+		             	<label>Nombre de caso</label>
+		                <input type="text" name="name"  placeholder="Nombre de caso" value="<%=Case.name%>" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
+		                <input type="number" name="number"  placeholder="Numero de caso" value="<%=Case.number%>" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de inicio</label>
+		                <input type="text" name="dateStart" placeholder="Inicio" value="<%=Case.dateStart%>" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de Finalización (Opcional)</label>
+		                <input type="text" name="dateFinish"  placeholder="Fin" value="<%=Case.dateFinish%>"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Juzgado</label>
+		                <select name="courtName">
+		                	<option value="<%=Case.courtName%>"><%=Case.courtName%></option>
+						    <% for(var i=0; i < Court.length; i++) { %>
+							  <option value="<%= Court[i].name %>" ><%= Court[i].name %></option>
+							<% } %>
+						</select>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Cliente (Opcional)</label>
+		                <select name="idClient">
+		                	<% for(var i=0; i < Client.length; i++) { %>
+		                		<% if(Client[i]._id == Case.idClient) { %>
+							  		<option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
+							  	<% } %>
+							<% } %>
+						    <% for(var i=0; i < Client.length; i++) { %>
+						    	<% if(Client[i]._id != Case.idClient) { %>
+							  		<option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
+							  	<% } %>	
+							<% } %>
+						  </select>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		              	<button  type="submit" class="button" >Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="reveal" id="modalDeleteCase" data-reveal>
+				  <h2>Esta seguro que desa borrar este caso?</h1>
+				  <h4>Todos los documentos asociados a este se eliminaran.</h3>
+				  <div>
+				  	<a href="#">
+                		<button onclick="deleteCase('<%= Case._id %>')"class="button">Borrar</button>
+              		</a>
+				  </div>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+		    </div>
+	    </section>
+			<script src="js-css/js/vendor/jquery.js"></script>
+		    <script src="js-css/js/vendor/what-input.js"></script>
+		    <script src="js-css/js/vendor/foundation.js"></script>
+		    <script src="js-css/js/case.js"></script>
+	</body>
+</html>
